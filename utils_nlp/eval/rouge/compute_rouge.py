@@ -7,7 +7,7 @@ import time
 import tempfile
 
 from pyrouge import Rouge155
-from rouge import Rouge
+import rouge
 from .rouge_ext import RougeExt
 
 
@@ -118,7 +118,7 @@ def compute_rouge_python(cand, ref, is_input_files=False, language="en"):
     assert len(candidates) == len(references)
 
     if language == "en":
-        evaluator = Rouge(
+        evaluator = rouge.Rouge(
             metrics=["rouge-n", "rouge-l"], max_n=2, limit_length=False, apply_avg=True
         )
     else:
